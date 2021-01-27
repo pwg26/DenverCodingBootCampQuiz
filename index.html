@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>QuizTime!</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Coding Quiz!</h1>
+    </header>
+
+    <!-- start page -->
+    <div id="start-page" class="wrapper">
+        <div class="card">
+            <div class="card-header">
+                <h2>Hope You Studied, Because You're In Trouble ;)</h2>
+            </div>
+            <div class="card-body">
+                <p>
+                    Hello fellow student!
+                    <br />
+                    <br />
+                    With these passed few weeks flying by in synergy with the sheer
+                    volume of informations you had to absorb, i'm sure you're streesed.
+                    With being said I think it's time to stress you out some more! Today
+                    is you're big day and I've decided lay a quiz on you to see if you
+                    were actually soaking up usfully knowledge or dank memes. This quiz
+                    consistes of 4 multiple choice quistions of which you will have 15
+                    seconds to complete each. If you fail to answer a qustion in the
+                    aloted time, it is counted as incorrect. You must score a 75% or
+                    higher to pass. If you fail, you will be forced to have the giger
+                    guy from week one move into your room.
+                    <br />
+                    <br />
+                    Good Luck!
+                </p>
+            </div>
+            <div class="card-footer">
+                <button id="start-btn" class="btn">Start!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- question 1 -->
+    <div id="q1" class="wrapper hide">
+        <div class="card">
+            <div class="card-header">
+                <h2>Qustion 1</h2>
+            </div>
+            <div>
+                <h2>What is the DOM?</h2>
+            </div>
+
+            <div class="card-body">
+                <div class="check-box">
+                    <input type="checkbox" id="q1a1" />
+                    <label for="q1a1"> Answer 1 </label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" id="q1a2" />
+                    <label for="q1a2"> Answer 2 </label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" value="q1a3" id="numbers" />
+                    <label for="q1a3"> Answer 3 </label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" id="q1a4" />
+                    <label for="q1a4"> answer 4 </label>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button id="question1-btn" class="btn">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- qustion 2 -->
+    <div id="q2" class="wrapper hide">
+        <div class="card">
+            <div class="card-header">
+                <h2>Qustion 3</h2>
+            </div>
+            <div>
+                <h2>What is The Difference Between Inline and Black Elements?</h2>
+            </div>
+
+            <div class="card-body">
+                <div class="check-box">
+                    <input type="checkbox" id="q2a1" />
+                    <label for="q2a1"> Answer 1 </label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" id="q2a2" />
+                    <label for="q2a2"> Answer 2 </label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" id="q2a3" />
+                    <label for="a2a3"> Answer 3 </label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" id="q2a4" />
+                    <label for="q2a4"> answer 4 </label>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button id="question3-btn" class="btn">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- question 3 -->
+    <div id="q3" class="wrapper">
+        <div class="card">
+            <div class="card-header">
+                <h2>Qustion 4</h2>
+            </div>
+            <div>
+                <h2>How Do you Call a Value From Local Storage</h2>
+            </div>
+            <div class="card-body">
+                <div class="check-box">
+                    <input type="checkbox" id="q3a1" />
+                    <label for="q3a1"> Answer 1 </label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" id="q3a2" />
+                    <label for="q3a2"> Answer 2 </label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" id="q3a3" />
+                    <label for="a3a3"> Answer 3 </label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" id="q3a4" />
+                    <label for="q3a4"> answer 4 </label>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button id="question2-btn" class="btn">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- qustion 4 -->
+    <div id="q4" class="wrapper">
+        <div class="card">
+            <div class="card-header">
+                <h2>Qustion 4</h2>
+            </div>
+            <div>
+                <h2>What was Benjamin Machock's Nickname in His Hometown?</h2>
+            </div>
+
+            <div class="card-body">
+                <div class="check-box">
+                    <input type="checkbox" id="q4a1" />
+                    <label for="q4a1"> Ragu </label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" id="q4a2" />
+                    <label for="q4a2"> Spinebuster </label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" id="q4a3" />
+                    <label for="a4a3"> Young Aristotle </label>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" id="q4a4" />
+                    <label for="q4a4"> Hash Slinging Slasher</label>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button id="question4-btn" class="btn">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- score page -->
+    <div id="Finish" class="wrapper">
+        <div class="card">
+            <div class="card-header">
+                <h2>Qustion 3</h2>
+            </div>
+            <div>
+                <h2>Your Scored <h2 id="score"> <h2></h2>
+            </div>
+
+            <div class="card-body">
+                <h3>You Pass! Now Back to Work!</h3>
+                <h3 id="oof" class="hide">OOOf back to the drawing Boad</h3>
+            </div>
+            <div class="card-footer">
+                <button id="question3-btn" class="btn">Next</button>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button id="final-btn" class="btn">Try Again!</button>
+        </div>
+    </div>
+
+    <script src="script.js" async defer></script>
+</body>
+
+</html>
