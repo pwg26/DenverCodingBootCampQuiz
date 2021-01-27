@@ -38,8 +38,23 @@ var q4a2 = document.getElementById("q4a2");
 var q4a3 = document.getElementById("q4a3");
 var q4a4 = document.getElementById("q4a4");
 
-// score
-var score = 0;
+// final page prompts and score
+displayedScore = document.getElementById("score").innerText;
+Fail = document.getElementById("oof");
+Pass = document.getElementById("yeah");
+
+// score(4 total)
+var score = 4;
+
+//  function that writes score
+function writescore() {
+  document.getElementById("score").innerText = String(score / 4) + "%";
+  if (score > 2) {
+    Pass.style.display = "block";
+  } else {
+    Fail.style.display = "block";
+  }
+}
 
 // timer function
 function timer() {}
@@ -52,18 +67,16 @@ startBtn.addEventListener("click", function () {
 
 // moves from question 1 to qustion 2
 q1Btn.addEventListener("click", function () {
-  var q1Corr = q1a3.checked;
-  var q1Fal1 = q1a1.checked;
-  var q1Fal2 = q1a2.checked;
-  var q1Fal3 = q1a3.checked;
+  var Cor1 = q1a3.checked;
+  var Fal1 = q1a1.checked;
+  var Fal2 = q1a2.checked;
+  var Fal3 = q1a4.checked;
 
-  if (!(q1Corr || q1Fal1 || q1Fal2 || q1Fal3)) {
+  if (!(Cor1 || Fal1 || Fal2 || Fal3)) {
     return;
   }
 
-  if (q1Corr) {
-    score++;
-  } else {
+  if (!Cor1) {
     score--;
   }
 
@@ -73,18 +86,57 @@ q1Btn.addEventListener("click", function () {
 
 // moves from question 2 to qustion 3
 q2Btn.addEventListener("click", function () {
+  var Cor1 = q2a3.checked;
+  var Cor2 = q2a4.checked;
+  var Fal1 = q2a1.checked;
+  var Fal2 = q2a2.checked;
+
+  if (!(Cor1 || Cor2 || Fal1 || Fal2)) {
+    return;
+  }
+
+  if (!(Cor1 && Cor2)) {
+    score--;
+  }
+
   q2Page.style.display = "none";
   q3Page.style.display = "block";
 });
 
 // moves from question 3 to qustion 4
 q3Btn.addEventListener("click", function () {
+  var Cor1 = q3a4.checked;
+  var Fal1 = q3a1.checked;
+  var Fal2 = q3a2.checked;
+  var Fal3 = q3a3.checked;
+
+  if (!(Cor1 || Fal3 || Fal1 || Fal2)) {
+    return;
+  }
+
+  if (!Cor1) {
+    score--;
+  }
+
   q3Page.style.display = "none";
   q4Page.style.display = "block";
 });
 
 // moves from question 4 to final page
 q4Btn.addEventListener("click", function () {
+  var Cor1 = q4a4.checked;
+  var Cor2 = q4a1.checked;
+  var Cor3 = q4a2.checked;
+  var Cor4 = q4a3.checked;
+
+  if (!(Cor1 || Cor2 || Cor3 || Cor4)) {
+    return;
+  }
+
+  if (!(Cor1 && Cor2 && Cor3 && Cor4)) {
+    score--;
+  }
+
   q4Page.style.display = "none";
   lastPage.style.display = "block";
 });

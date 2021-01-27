@@ -19,8 +19,8 @@ body {
 
 .wrapper {
   padding-top: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 20px, auto;
+  padding-right: 20px, auto;
 }
 
 header {
