@@ -13,6 +13,7 @@ var q2Btn = document.getElementById("question2-btn");
 var q3Btn = document.getElementById("question3-btn");
 var q4Btn = document.getElementById("question4-btn");
 var lastBtn = document.getElementById("final-btn");
+var save = document.getElementById("save-btn");
 
 // choices question1
 var q1a1 = document.getElementById("q1a1");
@@ -73,6 +74,7 @@ function startTime() {
       Verdict.innerText = "Epic Fail";
       Fail.style.display = "block";
       displayedTime.style.display = "none";
+      score = 0;
     }
     return timer;
   }, 1000);
@@ -90,6 +92,8 @@ function writescore() {
   document.getElementById("score").innerText =
     "Your Score: " + String((score / 4) * 100) + "%";
 }
+
+// function saves score in local storage
 
 // function that displays wrong if question is incorrect
 function wrong(x) {
@@ -111,8 +115,8 @@ startBtn.addEventListener("click", function () {
 // moves from question 1 to qustion 2
 q1Btn.addEventListener("click", function () {
   displayedTime.style.display = "incline-block";
-  var Cor1 = q1a3.checked;
-  var Fal1 = q1a1.checked;
+  var Cor1 = q1a1.checked;
+  var Fal1 = q1a3.checked;
   var Fal2 = q1a2.checked;
   var Fal3 = q1a4.checked;
 
@@ -123,7 +127,7 @@ q1Btn.addEventListener("click", function () {
   if (!Cor1) {
     score--;
     wrong(False);
-    timer = timer - 10;
+    time = time - 10;
   }
 
   q1Page.style.display = "none";
@@ -144,6 +148,7 @@ q2Btn.addEventListener("click", function () {
   if (!(Cor1 && Cor2)) {
     score--;
     wrong(False2);
+    time = time - 10;
   }
 
   q2Page.style.display = "none";
@@ -164,6 +169,7 @@ q3Btn.addEventListener("click", function () {
   if (!Cor1) {
     score--;
     wrong(False3);
+    time = time - 10;
   }
 
   q3Page.style.display = "none";
@@ -185,6 +191,7 @@ q4Btn.addEventListener("click", function () {
   if (!(Cor1 && Cor2 && Cor3 && Cor4)) {
     score--;
     wrong(False4);
+    time = time - 10;
   }
 
   q4Page.style.display = "none";
@@ -195,7 +202,15 @@ q4Btn.addEventListener("click", function () {
   writescore();
 });
 
-lastBtn.addEventListener("click", function () {
+// function for storing score
+save.addEventListener("click", function () {
+  let initials = prompt("Type Your First and last initial");
+
+  localStorage.setItem(toString(initials), String((score / 4) * 100) + "%");
+  window.alert(
+    "You can access your score by typing localStorage.getItem(Your intials)"
+  );
+
   lastPage.style.display = "none";
   startPage.style.display = "block";
 });
