@@ -12,7 +12,6 @@ var q1Btn = document.getElementById("question1-btn");
 var q2Btn = document.getElementById("question2-btn");
 var q3Btn = document.getElementById("question3-btn");
 var q4Btn = document.getElementById("question4-btn");
-var lastBtn = document.getElementById("final-btn");
 var save = document.getElementById("save-btn");
 
 // choices question1
@@ -106,7 +105,7 @@ function wrong(x) {
 // moves from starter to qustion 1 and starts timer
 startBtn.addEventListener("click", function () {
   time = 60;
-  startTime();
+  // startTime();
   displayedTime.style.display = "inline-block";
   q1Page.style.display = "block";
   startPage.style.display = "none";
@@ -120,12 +119,14 @@ q1Btn.addEventListener("click", function () {
   var Fal2 = q1a2.checked;
   var Fal3 = q1a4.checked;
 
+  // makes sure at least one section is made
   if (!(Cor1 || Fal1 || Fal2 || Fal3)) {
     return;
   }
 
+  // makes sure corrct answer does not subtract from possible points and that there can only be one deduction
   if (!Cor1) {
-    score--;
+    score = score - 1;
     wrong(False);
     time = time - 10;
   }
@@ -146,7 +147,7 @@ q2Btn.addEventListener("click", function () {
   }
 
   if (!(Cor1 && Cor2)) {
-    score--;
+    score = score - 1;
     wrong(False2);
     time = time - 10;
   }
@@ -167,7 +168,7 @@ q3Btn.addEventListener("click", function () {
   }
 
   if (!Cor1) {
-    score--;
+    score = score - 1;
     wrong(False3);
     time = time - 10;
   }
@@ -189,7 +190,7 @@ q4Btn.addEventListener("click", function () {
   }
 
   if (!(Cor1 && Cor2 && Cor3 && Cor4)) {
-    score--;
+    score = -1;
     wrong(False4);
     time = time - 10;
   }
@@ -202,7 +203,7 @@ q4Btn.addEventListener("click", function () {
   writescore();
 });
 
-// function for storing score
+// function for storing score in final page
 save.addEventListener("click", function () {
   let initials = prompt("Type Your First and last initial");
 
@@ -211,6 +212,10 @@ save.addEventListener("click", function () {
     "You can access your score by typing localStorage.getItem(Your intials)"
   );
 
+  // unchecks check-boxes
+  document.querySelectorAll("check-box").checked = false;
+
   lastPage.style.display = "none";
   startPage.style.display = "block";
+  score = 4;
 });
