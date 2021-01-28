@@ -39,34 +39,65 @@ var q4a3 = document.getElementById("q4a3");
 var q4a4 = document.getElementById("q4a4");
 
 // final page prompts and score
-displayedScore = document.getElementById("score").innerText;
+Verdict = document.getElementById("sum-head");
+displayedScore = document.getElementById("score");
 Fail = document.getElementById("oof");
 Pass = document.getElementById("yeah");
 
 // score(4 total)
 var score = 4;
 
-//  function that writes score
-function writescore() {
-  document.getElementById("score").innerText = String(score / 4) + "%";
-  if (score > 2) {
-    Pass.style.display = "block";
-  } else {
-    Fail.style.display = "block";
-  }
+// timer
+var displayedTime = document.getElementById("count-down");
+var timer;
+var time;
+
+// countdown function
+function startTime() {
+  var timer = setInterval(function () {
+    time--;
+    displayedTime.textContent = time;
+    if (time === 0) {
+      clearInterval(timer);
+      q1Page.style.display = "none";
+      q2Page.style.display = "none";
+      q3Page.style.display = "none";
+      q4Page.style.display = "none";
+      lastPage.style.display = "block";
+      Verdict.innerText = "Epic Fail";
+      Fail.style.display = "block";
+      displayedTime.style.display = "none";
+    }
+    return timer;
+  }, 1000);
 }
 
-// timer function
-function timer() {}
+//  function that writes score
+function writescore() {
+  if (score > 2) {
+    Verdict.innerText = "Great Success";
+    Pass.style.display = "block";
+  } else {
+    Verdict.innerText = "Epic Fail";
+    Fail.style.display = "block";
+  }
+  document.getElementById("score").innerText =
+    "Your Score: " + String((score / 4) * 100) + "%";
+}
 
-// moves from starter to qustion 1
+// moves from starter to qustion 1 and starts timer
+
 startBtn.addEventListener("click", function () {
+  time = 60;
+  startTime();
+  displayedTime.style.display = "inline-block";
   q1Page.style.display = "block";
   startPage.style.display = "none";
 });
 
 // moves from question 1 to qustion 2
 q1Btn.addEventListener("click", function () {
+  displayedTime.style.display = "incline-block";
   var Cor1 = q1a3.checked;
   var Fal1 = q1a1.checked;
   var Fal2 = q1a2.checked;
@@ -85,23 +116,7 @@ q1Btn.addEventListener("click", function () {
 });
 
 // moves from question 2 to qustion 3
-q2Btn.addEventListener("click", function () {
-  var Cor1 = q2a3.checked;
-  var Cor2 = q2a4.checked;
-  var Fal1 = q2a1.checked;
-  var Fal2 = q2a2.checked;
-
-  if (!(Cor1 || Cor2 || Fal1 || Fal2)) {
-    return;
-  }
-
-  if (!(Cor1 && Cor2)) {
-    score--;
-  }
-
-  q2Page.style.display = "none";
-  q3Page.style.display = "block";
-});
+q2Btn.addEventListener("click", function () {});
 
 // moves from question 3 to qustion 4
 q3Btn.addEventListener("click", function () {
@@ -124,6 +139,7 @@ q3Btn.addEventListener("click", function () {
 
 // moves from question 4 to final page
 q4Btn.addEventListener("click", function () {
+  displayedTime.style.display = "none";
   var Cor1 = q4a4.checked;
   var Cor2 = q4a1.checked;
   var Cor3 = q4a2.checked;
@@ -139,9 +155,23 @@ q4Btn.addEventListener("click", function () {
 
   q4Page.style.display = "none";
   lastPage.style.display = "block";
+
+  clearInterval(timer);
+
+  writescore();
 });
 
 lastBtn.addEventListener("click", function () {
   lastPage.style.display = "none";
   startPage.style.display = "block";
 });
+
+// if (time == 0) {
+//   q1Page.style.display = "none";
+//   q2Page.style.display = "none";
+//   q3Page.style.display = "none";
+//   q4Page.style.display = "none";
+//   lastPage.style.display = "block";
+//   Verdict.innerText = "Epic Fail";
+//   Fail.style.display = "block";
+// }
