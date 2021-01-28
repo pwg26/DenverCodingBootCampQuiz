@@ -44,6 +44,12 @@ displayedScore = document.getElementById("score");
 Fail = document.getElementById("oof");
 Pass = document.getElementById("yeah");
 
+// wrong message
+var False = document.getElementById("wrong1");
+var False2 = document.getElementById("wrong2");
+var False3 = document.getElementById("wrong3");
+var False4 = document.getElementById("wrong4");
+
 // score(4 total)
 var score = 4;
 
@@ -85,8 +91,15 @@ function writescore() {
     "Your Score: " + String((score / 4) * 100) + "%";
 }
 
-// moves from starter to qustion 1 and starts timer
+// function that displays wrong if question is incorrect
+function wrong(x) {
+  x.style.display = "block";
+  setTimeout(function () {
+    x.style.display = "none";
+  }, 700);
+}
 
+// moves from starter to qustion 1 and starts timer
 startBtn.addEventListener("click", function () {
   time = 60;
   startTime();
@@ -109,6 +122,8 @@ q1Btn.addEventListener("click", function () {
 
   if (!Cor1) {
     score--;
+    wrong(False);
+    timer = timer - 10;
   }
 
   q1Page.style.display = "none";
@@ -116,12 +131,29 @@ q1Btn.addEventListener("click", function () {
 });
 
 // moves from question 2 to qustion 3
-q2Btn.addEventListener("click", function () {});
+q2Btn.addEventListener("click", function () {
+  var Cor1 = q2a4.checked;
+  var Cor2 = q2a3.checked;
+  var Fal1 = q2a1.checked;
+  var Fal2 = q2a2.checked;
+
+  if (!(Cor1 || Cor2 || Fal1 || Fal2)) {
+    return;
+  }
+
+  if (!(Cor1 && Cor2)) {
+    score--;
+    wrong(False2);
+  }
+
+  q2Page.style.display = "none";
+  q3Page.style.display = "block";
+});
 
 // moves from question 3 to qustion 4
 q3Btn.addEventListener("click", function () {
-  var Cor1 = q3a4.checked;
-  var Fal1 = q3a1.checked;
+  var Cor1 = q3a1.checked;
+  var Fal1 = q3a4.checked;
   var Fal2 = q3a2.checked;
   var Fal3 = q3a3.checked;
 
@@ -131,6 +163,7 @@ q3Btn.addEventListener("click", function () {
 
   if (!Cor1) {
     score--;
+    wrong(False3);
   }
 
   q3Page.style.display = "none";
@@ -151,6 +184,7 @@ q4Btn.addEventListener("click", function () {
 
   if (!(Cor1 && Cor2 && Cor3 && Cor4)) {
     score--;
+    wrong(False4);
   }
 
   q4Page.style.display = "none";
@@ -165,13 +199,3 @@ lastBtn.addEventListener("click", function () {
   lastPage.style.display = "none";
   startPage.style.display = "block";
 });
-
-// if (time == 0) {
-//   q1Page.style.display = "none";
-//   q2Page.style.display = "none";
-//   q3Page.style.display = "none";
-//   q4Page.style.display = "none";
-//   lastPage.style.display = "block";
-//   Verdict.innerText = "Epic Fail";
-//   Fail.style.display = "block";
-// }

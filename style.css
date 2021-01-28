@@ -24,6 +24,7 @@ body {
 }
 
 header {
+  display: block;
   text-align: center;
   padding: 20px;
   padding-top: 0px;
@@ -109,6 +110,14 @@ header {
 
 header {
   display: inline;
+}
+
+.error {
+  color: red;
+  display: inline;
+  margin: auto o;
+  text-align: center;
+  margin: 0 auto;
 }
 
 @media (max-width: 690px) {
