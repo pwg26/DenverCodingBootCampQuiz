@@ -105,7 +105,7 @@ function wrong(x) {
 // moves from starter to qustion 1 and starts timer
 startBtn.addEventListener("click", function () {
   time = 60;
-  // startTime();
+  startTime();
   displayedTime.style.display = "inline-block";
   q1Page.style.display = "block";
   startPage.style.display = "none";
