@@ -124,8 +124,8 @@ q1Btn.addEventListener("click", function () {
     return;
   }
 
-  // makes sure corrct answer does not subtract from possible points and that there can only be one deduction
-  if (!Cor1) {
+  // makes sure corrct answer does not subtract from possible points and that there can only be one deduction and timer subtracts
+  if (Fal1 || Fal2 || Fal3) {
     score = score - 1;
     wrong(False);
     time = time - 10;
@@ -146,7 +146,7 @@ q2Btn.addEventListener("click", function () {
     return;
   }
 
-  if (!(Cor1 && Cor2)) {
+  if (!(Cor1 && Cor2) || Fal1 || Fal2) {
     score = score - 1;
     wrong(False2);
     time = time - 10;
@@ -167,7 +167,7 @@ q3Btn.addEventListener("click", function () {
     return;
   }
 
-  if (!Cor1) {
+  if (Fal3 || Fal1 || Fal2) {
     score = score - 1;
     wrong(False3);
     time = time - 10;
@@ -190,7 +190,7 @@ q4Btn.addEventListener("click", function () {
   }
 
   if (!(Cor1 && Cor2 && Cor3 && Cor4)) {
-    score = -1;
+    score = score - 1;
     wrong(False4);
     time = time - 10;
   }
@@ -212,10 +212,8 @@ save.addEventListener("click", function () {
     "You can access your score by typing localStorage.getItem(Your intials)"
   );
 
-  // unchecks check-boxes
-  document.querySelectorAll("check-box").checked = false;
-
   lastPage.style.display = "none";
   startPage.style.display = "block";
   score = 4;
+  time = 60;
 });
